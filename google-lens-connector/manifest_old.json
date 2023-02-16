@@ -1,0 +1,39 @@
+{
+  "name": "google-lens-connector",
+  "description": "",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "scripting",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://lens.google.com/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://lens.google.com/*"],
+      "js": ["paste.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://lens.google.com/*"],
+      "resources": []
+    }
+  ],
+  "commands": {
+    "switch_google_lens": {
+      "description": "switch/open Google Lens tab and paste content",
+      "suggested_key": {
+        "default": "Alt+L"
+
+      }
+    }
+  }
+}
