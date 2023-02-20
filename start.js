@@ -1,19 +1,17 @@
 import puppeteer, { Browser } from 'puppeteer'
 import path from 'path'
-import { extensions } from './extensions.js'
+import { executablePath, extensions } from './config.js'
 import { wait } from './util.js'
 
-const dirname = path.dirname(new URL(import.meta.url).pathname.slice(1))
+const __dirname = path.dirname(new URL(import.meta.url).pathname.slice(1))
 
-const _extensions = [path.join(dirname, '/google-lens-connector'), ...extensions]
+const _extensions = [path.join(__dirname, '/google-lens-connector'), ...extensions]
 
 const browser = await puppeteer.launch({
   headless: false,
   userDataDir: 'User Data',
   defaultViewport: null,
-  args: [
-  ],
-  // executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  executablePath,
   args: [
     '--start-maximized',
     `--disable-extensions-except=${_extensions.join(',')}`,

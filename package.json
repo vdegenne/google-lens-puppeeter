@@ -1,4 +1,5 @@
 {
+  "name": "google-lens-puppeteer",
   "type": "module",
   "devDependencies": {
     "puppeteer": "^19.6.3"
