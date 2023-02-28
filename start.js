@@ -15,9 +15,9 @@ const browser = await puppeteer.launch({
   args: [
     '--start-maximized',
     `--disable-extensions-except=${_extensions.join(',')}`,
-    // `--load-extension=${_extensions.join(',')}`,
+    `--load-extension=${_extensions.join(',')}`,
+    '--autoplay-policy=no-user-gesture-required',
     // '--profile-directory="Profile 4"',
-    // '--autoplay-policy=no-user-gesture-required'
     '--disable-infobars',
     '--test-type',
   ],
@@ -87,18 +87,19 @@ const onTargetEvent = async (target, type) => {
         await page.keyboard.down('Control')
         await page.keyboard.press('V')
         await page.keyboard.up('Control')
+        await new Promise(r => setTimeout(r, 2000))
+        await page.bringToFront()
       })
       target.hasPasteContentExposedFunction = true
       return
     }
-    if (title == 'Loading...') {
-      page.close()
-    }
+    // if (title == 'Loading...') {
+    //   page.close()
+    // }
   } catch (e) {
     console.error(e)
   }
 }
-
 
 browser.on('targetcreated', (target) => onTargetEvent(target, 'created'))
 browser.on('targetchanged', (target) => onTargetEvent(target, 'changed'))
@@ -109,4 +110,3 @@ const pages = await browser.pages()
 pages[0].close()
 const lensPage = await browser.newPage(lensUrl)
 lensPage.goto(lensUrl)
-
