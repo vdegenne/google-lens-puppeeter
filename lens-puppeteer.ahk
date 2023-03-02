@@ -1,11 +1,12 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+;SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 !+s::
+sleep 250
 ; Trigger the "take a screenshot" on Windows
-Send, {LWin Down}S{LWin Up}
+Send #+s
 ; Input, key, L1 T1, % "{Escape}"
 ; (key = "") && key := "{" StrReplace(ErrorLevel, "EndKey:") "}"
 ; if (key="{Escape}") {
@@ -30,6 +31,7 @@ KeyWait, Lbutton
 ;MouseMove, 300, 400, 0
 ;MouseClick
 ;Send, ^v
+sleep 200
 Send, !l
 Return
 WinActivate, localhost:43191
