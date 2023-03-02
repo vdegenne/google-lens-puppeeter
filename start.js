@@ -1,13 +1,17 @@
-import puppeteer, { Browser } from 'puppeteer';
+import puppeteer from 'puppeteer';
 import path from 'path';
-import { executablePath, extensions } from './config.js';
-import { wait } from './util.js';
+import { readdir } from 'fs/promises';
+import { executablePath } from './config.js';
+// import { wait } from './util.js';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname.slice(1));
 
+const userDefinedExtensions = await readdir(path.join(__dirname, 'extensions'));
 const _extensions = [
-  path.join(__dirname, '/google-lens-connector'),
-  ...extensions,
+  path.join(__dirname, 'google-lens-connector'),
+  ...userDefinedExtensions.map((dir) =>
+    path.join(__dirname, 'extensions', dir)
+  ),
 ];
 
 const browser = await puppeteer.launch({
