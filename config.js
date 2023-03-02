@@ -22,12 +22,4 @@ export const executablePath = 'C:\\Program Files\\Google\\Chrome\\Application\\c
  * the settings in other Chrome instances where it is loaded. Puppeteer saves changes to its own data directory.
  */
 export const extensions = [
-  "C:\\Users\\oddant\\gits\\smartup",
-  "C:\\Users\\oddant\\gits\\tab-quick-access",
-  "C:\\Users\\oddant\\gits\\inpage-hiragana",
-  "C:\\Users\\oddant\\gits\\lens-chords",
-  "C:\\Users\\oddant\\gits\\japanese-inpage-dictionary2",
-  "C:\\Users\\oddant\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\aapbdbdomjkkjkaonfhkkikfgjllcleb\\2.0.12_0",
-  "C:\\Users\\oddant\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 4\\Extensions\\dhdgffkkebhmkfjojejmpbldmpobfkfo\\4.18.1_0",
-  "C:\\Users\\oddant\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\jjagagcgljmlnihcilbpbfcglnopepjb\\0.1_0",
 ];
