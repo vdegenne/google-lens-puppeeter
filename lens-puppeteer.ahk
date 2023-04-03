@@ -4,7 +4,6 @@
 ;SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 !+s::
-sleep 250
 ; Trigger the "take a screenshot" on Windows
 Send #+s
 ; Input, key, L1 T1, % "{Escape}"
