@@ -51,14 +51,17 @@ const onTargetEvent = async (target, type) => {
         // await page.click('body')
         // await page.waitForNetworkIdle()
         // await page.bringToFront();
-        await page.mouse.click(0, 0);
+        const innerWidth = await page.evaluate(() => { return window.innerWidth });
+        await page.mouse.click(innerWidth - 5, 64 + 5);
         await page.keyboard.down('Control');
         await page.keyboard.press('V');
         await page.keyboard.up('Control');
-        for (let i = 0; i < 2; ++i) {
+        page.bringToFront();
+        page.bringToFront();
+        /* for (let i = 0; i < 2; ++i) {
           await new Promise((r) => setTimeout(r, 400));
           page.bringToFront();
-        }
+        } */
       });
       target.hasPasteContentExposedFunction = true;
       return;
